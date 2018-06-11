@@ -28,3 +28,7 @@ Calls StackExchange API [user endpoint](https://api.stackexchange.com/2.2/users?
 Shows avatars stored in app's document directory.
 
 ![ImagesStored on disk](./StackExchange/Screenshots/AppDocumentsDirectory.png)
+
+![Users](./StackExchange/Screenshots/Users.png)
+
+![User Details](./StackExchange/Screenshots/UserDetails.png)
