@@ -29,6 +29,8 @@ Shows avatars stored in app's document directory.
 
 ![ImagesStored on disk](./StackExchange/Screenshots/AppDocumentsDirectory.png)
 
+### Users
 ![Users](./StackExchange/Screenshots/Users.png)
 
+### User Details
 ![User Details](./StackExchange/Screenshots/UserDetails.png)

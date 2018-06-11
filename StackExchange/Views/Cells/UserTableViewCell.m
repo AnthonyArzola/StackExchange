@@ -45,6 +45,9 @@
     self.viewRank.layer.borderColor = UIColor.whiteColor.CGColor;
     
     // Configure image view
+    [self.activityIndicatorAvatar startAnimating];
+    self.activityIndicatorAvatar.hidesWhenStopped = YES;
+    
     self.imageViewAvatar.layer.cornerRadius = self.imageViewAvatar.frame.size.width / 2;
     self.imageViewAvatar.layer.masksToBounds = YES;
     self.imageViewAvatar.layer.borderWidth = 1;

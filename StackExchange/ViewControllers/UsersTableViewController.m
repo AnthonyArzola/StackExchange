@@ -103,79 +103,13 @@
         
     cell.labelRank.text = [NSString stringWithFormat:@"%d", 1 + (int)indexPath.row];
 
-    NSNumber *key = [NSNumber numberWithInt:stackOverflowUser.userId];
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docDirectory = [path objectAtIndex:0];
-    NSString *imagePath = [docDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d.png", @"Avatars", stackOverflowUser.userId]];
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
-    
-    //NSLog(@" -- Image Key:%@, Path:%@", key, imagePath);
-    
-    // 1. Check cache
-    // 2. Check file system
-    // 3. Download, save to file system and cache it!
-    
-    if ([[SECache sharedInstance].avatarImages objectForKey:key] != nil) {
-        NSLog(@" -- Lookup cached image.");
-        
-        UIImage *cachedImage = [[SECache sharedInstance].avatarImages objectForKey:key];
-        // Set cell's avatar
-        cell.imageViewAvatar.image = cachedImage;
-        
-    } else if ([fileMgr fileExistsAtPath:imagePath]) {
-        NSLog(@" -- Lookup image from file system AND cache it.");
-        
-        // Set cell's avatar
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            // Perform file I/O asynchronously
-            UIImage *localImage = [UIImage imageWithContentsOfFile:imagePath];
-            [[SECache sharedInstance].avatarImages setObject:localImage forKey:key];
-            
-            // Update UI on the main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                cell.imageViewAvatar.image = localImage;
-            });
+    [self fetchImageForUser:stackOverflowUser withCompletionHandler:^(UIImage *avatarImage) {
+        // Update UI on the main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.imageViewAvatar.image = avatarImage;
+            [cell.activityIndicatorAvatar stopAnimating];
         });
-        
-    } else {
-        NSURL *imageURL = [[NSURL alloc] initWithString:stackOverflowUser.profileImage];
-        SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
-        
-        [downloader downloadImageWithURL:imageURL options:SDWebImageDownloaderLowPriority
-                                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-                                    // NOP
-                                } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-                                    if (image && finished && error == nil) {
-                                        
-                                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                                        NSString *documentDirectory = [paths objectAtIndex:0];
-                                        NSString *mediaPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d.png", @"Avatars", stackOverflowUser.userId]];
-                                        NSFileManager *fileManager = [NSFileManager defaultManager];
-                                        
-                                        bool imageExists = [fileManager fileExistsAtPath:mediaPath];
-                                        
-                                        @try {
-                                            if (!imageExists) {
-                                                NSLog(@" -- Saving, caching and setting image. Yay! Path:%@", mediaPath);
-                                                
-                                                // Save to file system
-                                                [data writeToFile:mediaPath atomically:YES];
-                                                // Cache it
-                                                [[SECache sharedInstance].avatarImages setObject:image forKey:key];
-                                                // Set cell
-                                                cell.imageViewAvatar.image = image;
-                                            }
-                                        }
-                                        @catch (NSException *exception)
-                                        {
-                                            NSLog(@" -- Exception while saving, caching or setting image. Exception:%@", exception);
-                                        }
-                                    }
-                                    else {
-                                        NSLog(@" -- Unable to download. Error:%@", error.localizedDescription);
-                                    }
-                                }];
-    }
+    }];
     
     return cell;
 }
@@ -212,7 +146,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [weakSelf.webService requestUsers:^(id responseObject) {
             
-            NSLog(@"Success!");
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 NSDictionary *items = [responseObject objectForKey:@"items"];
@@ -222,10 +155,82 @@
             });
             
         } withFailure:^(NSError *error) {
-            NSLog(@"Failure");
+            //TODO: alert user, show toast, log etc.
         }];
     });
     
+}
+
+- (void)fetchImageForUser:(SEUser *)stackOverflowUser withCompletionHandler:(void(^)(UIImage *avatarImage))completionHandler {
+    
+    NSNumber *key = [NSNumber numberWithInt:stackOverflowUser.userId];
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDirectory = [path objectAtIndex:0];
+    NSString *imagePath = [docDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d.png", @"Avatars", stackOverflowUser.userId]];
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    // 1. Check cache
+    // 2. Check file system
+    // 3. Download, save to file system and cache it!
+    
+    if ([[SECache sharedInstance].avatarImages objectForKey:key] != nil) {
+        NSLog(@" -- Retrieved cached image.");
+        // Get cached image
+        UIImage *cachedImage = [[SECache sharedInstance].avatarImages objectForKey:key];
+        // Execute block
+        completionHandler(cachedImage);
+        
+    } else if ([fileMgr fileExistsAtPath:imagePath]) {
+        NSLog(@" -- Retrieved image from file system AND cached it.");
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            // Read stored image
+            UIImage *localImage = [UIImage imageWithContentsOfFile:imagePath];
+            // Cache it
+            [[SECache sharedInstance].avatarImages setObject:localImage forKey:key];
+            // Execute block
+            completionHandler(localImage);
+        });
+        
+    } else {
+        NSURL *imageURL = [[NSURL alloc] initWithString:stackOverflowUser.profileImage];
+        SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+        
+        [downloader downloadImageWithURL:imageURL options:SDWebImageDownloaderLowPriority
+                                progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                                    // NOP
+                                } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+                                    if (image && finished && error == nil) {
+                                        
+                                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                                        NSString *documentDirectory = [paths objectAtIndex:0];
+                                        NSString *mediaPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d.png", @"Avatars", stackOverflowUser.userId]];
+                                        NSFileManager *fileManager = [NSFileManager defaultManager];
+                                        
+                                        bool imageExists = [fileManager fileExistsAtPath:mediaPath];
+                                        
+                                        @try {
+                                            if (!imageExists) {
+                                                NSLog(@" -- Downloaded image, saved it locally and cached it. Yay! Path:%@", mediaPath);
+                                                
+                                                // Save to file system
+                                                [data writeToFile:mediaPath atomically:YES];
+                                                // Cache it
+                                                [[SECache sharedInstance].avatarImages setObject:image forKey:key];
+                                                // Execute block
+                                                completionHandler(image);
+                                            }
+                                        }
+                                        @catch (NSException *exception)
+                                        {
+                                            NSLog(@" -- Exception while saving/caching. Exception:%@", exception);
+                                        }
+                                    }
+                                    else {
+                                        NSLog(@" -- Unable to download. Error:%@", error.localizedDescription);
+                                    }
+                                }];
+    }
 }
 
 @end

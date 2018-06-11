@@ -111,12 +111,20 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Mgi-yU-zvY">
+                                            <rect key="frame" x="38" y="44" width="37" height="37"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="37" id="dXB-aD-Red"/>
+                                                <constraint firstAttribute="width" constant="37" id="pSJ-dC-lcS"/>
+                                            </constraints>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="h6P-9J-o1M" firstAttribute="leading" secondItem="Vpr-ga-Hh7" secondAttribute="trailing" constant="10" id="9Wh-0y-mBI"/>
                                         <constraint firstItem="8np-SF-eVR" firstAttribute="leading" secondItem="Vpr-ga-Hh7" secondAttribute="trailing" constant="10" id="DvV-CL-MYi"/>
                                         <constraint firstItem="ebA-EG-9UP" firstAttribute="leading" secondItem="Vpr-ga-Hh7" secondAttribute="trailing" constant="10" id="Edz-YT-x25"/>
                                         <constraint firstItem="ebA-EG-9UP" firstAttribute="top" secondItem="h6P-9J-o1M" secondAttribute="bottom" constant="12" id="Khy-0a-2nO"/>
+                                        <constraint firstItem="Mgi-yU-zvY" firstAttribute="leading" secondItem="Vpr-ga-Hh7" secondAttribute="trailing" constant="-64" id="M7i-zI-Yw6"/>
                                         <constraint firstItem="Vpr-ga-Hh7" firstAttribute="top" secondItem="VX4-9P-WJr" secondAttribute="top" constant="18" id="R69-Gd-6Ru"/>
                                         <constraint firstItem="h6P-9J-o1M" firstAttribute="top" secondItem="8np-SF-eVR" secondAttribute="bottom" constant="12" id="Ufj-33-h8p"/>
                                         <constraint firstItem="8np-SF-eVR" firstAttribute="top" secondItem="VX4-9P-WJr" secondAttribute="top" constant="19" id="Vrj-o6-lZu"/>
@@ -125,10 +133,12 @@
                                         <constraint firstItem="ep5-b3-r8x" firstAttribute="leading" secondItem="USx-Wh-WMJ" secondAttribute="trailing" constant="15" id="tCm-Lr-Pgu"/>
                                         <constraint firstItem="Vpr-ga-Hh7" firstAttribute="leading" secondItem="VX4-9P-WJr" secondAttribute="leading" constant="10" id="tLO-iF-ogc"/>
                                         <constraint firstItem="USx-Wh-WMJ" firstAttribute="leading" secondItem="ebA-EG-9UP" secondAttribute="trailing" constant="15" id="xFO-ii-0ef"/>
+                                        <constraint firstItem="Vpr-ga-Hh7" firstAttribute="top" secondItem="Mgi-yU-zvY" secondAttribute="bottom" constant="-63" id="yoU-IB-8nd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.066666666669999999" green="0.4823529412" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="activityIndicatorAvatar" destination="Mgi-yU-zvY" id="vDu-sy-nQb"/>
                                     <outlet property="imageViewAvatar" destination="Vpr-ga-Hh7" id="tHK-rE-G0G"/>
                                     <outlet property="labelBronzePoints" destination="ll6-g0-756" id="w9L-5r-wA8"/>
                                     <outlet property="labelGoldPoints" destination="vxr-vZ-uPJ" id="CxN-uv-OSi"/>

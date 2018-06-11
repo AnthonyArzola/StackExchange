@@ -17,6 +17,8 @@
 
 // UI
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewAvatar;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorAvatar;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelRank;
 @property (weak, nonatomic) IBOutlet UIView *viewRank;
 
