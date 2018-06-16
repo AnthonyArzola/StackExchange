@@ -8,7 +8,7 @@ Calls StackExchange API [user endpoint](https://api.stackexchange.com/2.2/users?
 
 ## Features
 
-* Downloads user's avatar once and saves it locally
+* Downloads user's avatar once and saves it locally (e.g., app's document directory)
   * App will cache image to speed up retrieval and reduce file I/O
 
 * Supports pull-down-refresh (UsersTableViewController)
