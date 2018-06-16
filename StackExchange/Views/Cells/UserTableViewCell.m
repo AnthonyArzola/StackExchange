@@ -40,7 +40,8 @@
     [self configureBadgeView:_viewBronze withBorderColor:UIColor.brownColor];
     
     // Configure rank
-    self.viewRank.layer.cornerRadius = 15;
+    self.viewRank.clipsToBounds = YES;
+    self.viewRank.layer.cornerRadius = 11;
     self.viewRank.layer.borderWidth = 1;
     self.viewRank.layer.borderColor = UIColor.whiteColor.CGColor;
     
