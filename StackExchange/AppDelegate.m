@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SEConstants.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,7 @@
     
     // Override point for customization after application launch.
     
+    // Create 'Avatars' directory if it doesn't exist
     NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docDirectory = [path objectAtIndex:0];
     NSString *avatarPath = [docDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", @"Avatars"]];
@@ -36,9 +38,17 @@
         }
     }
     
+    // Ensure user settings has safe default
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:SETTINGS_FORCE_DOWNLOAD] == nil)
+    {
+        [userDefaults setBool:NO forKey:SETTINGS_FORCE_DOWNLOAD];
+        [userDefaults synchronize];
+    }
+    
     // In general, you shouldn't send sleep commands. In this case, I just want
     // the launch screen to stay up a bit longer.
-    [NSThread sleepForTimeInterval:1.0f];
+    [NSThread sleepForTimeInterval:0.5f];
     
     return YES;
 }

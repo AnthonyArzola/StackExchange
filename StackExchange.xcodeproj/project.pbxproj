@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E69246520D7392F00DE3316 /* AppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69246420D7392F00DE3316 /* AppSettingsViewController.m */; };
 		3E83621520CA6D4800E26808 /* SEWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621420CA6D4800E26808 /* SEWebService.m */; };
 		3E83621820CA6DF400E26808 /* SEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621720CA6DF400E26808 /* SEUser.m */; };
 		3E83621B20CA6E1D00E26808 /* SEBadges.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621A20CA6E1D00E26808 /* SEBadges.m */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		15A9602F9D3C04193A576BA8 /* libPods-StackExchange.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackExchange.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E69246320D7392F00DE3316 /* AppSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppSettingsViewController.h; sourceTree = "<group>"; };
+		3E69246420D7392F00DE3316 /* AppSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppSettingsViewController.m; sourceTree = "<group>"; };
 		3E83621220CA6D2500E26808 /* SEConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEConstants.h; sourceTree = "<group>"; };
 		3E83621320CA6D4800E26808 /* SEWebService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEWebService.h; sourceTree = "<group>"; };
 		3E83621420CA6D4800E26808 /* SEWebService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEWebService.m; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 				3E87CC2220C8FEA70072619E /* UsersTableViewController.m */,
 				3E83622020CC980500E26808 /* UserDetailsViewController.h */,
 				3E83622120CC980500E26808 /* UserDetailsViewController.m */,
+				3E69246320D7392F00DE3316 /* AppSettingsViewController.h */,
+				3E69246420D7392F00DE3316 /* AppSettingsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				3ECDDD5E20CE045800C28661 /* SECache.m in Sources */,
 				3E83621820CA6DF400E26808 /* SEUser.m in Sources */,
 				3E87CBFA20C8F9C60072619E /* AppDelegate.m in Sources */,
+				3E69246520D7392F00DE3316 /* AppSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

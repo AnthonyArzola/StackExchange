@@ -57,14 +57,48 @@
     // Preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
     
-    // Configure Pull-down refresh, associate with loadData method
+    // Configure Pull-down refresh, associate with fetchUsers method
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor blackColor];
     [refreshControl addTarget:self action:@selector(fetchUsers:) forControlEvents:UIControlEventValueChanged];
     self.tableView.refreshControl = refreshControl;
     
-    [self fetchUsers:nil];
+    // Check if user requested that existing pictures be deleted and re-downloaded
+    // Note: Normally, you would do this in a background thread. For now, I want finish file i/o before I continue.
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:SETTINGS_FORCE_DOWNLOAD] != nil && [userDefaults boolForKey:SETTINGS_FORCE_DOWNLOAD])
+    {
+        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *docDirectory = [path objectAtIndex:0];
+        NSString *imagePath = [docDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", @"Avatars"]];
+        
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:imagePath];
+        NSString *file;
+        
+        @try {
+            // Delete existing avatars
+            while (file = [enumerator nextObject]) {
+                NSError *error = nil;
+                BOOL result = [fileManager removeItemAtPath:[imagePath stringByAppendingPathComponent:file] error:&error];
+                
+                if (!result && error) {
+                    NSLog(@"Unable to remove %@. Error: %@", file, error);
+                }
+                else {
+                    NSLog(@"Successfully remove %@", file);
+                }
+            }
+        } @catch (NSException *exception) {
+            NSLog(@"Unable to delete pictures: Exception is:%@", exception);
+        } @finally {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setBool:NO forKey:SETTINGS_FORCE_DOWNLOAD];
+            [userDefaults synchronize];
+        }
+    }
     
+    [self fetchUsers:nil];
 }
 
 #pragma mark - Table view data source
@@ -116,7 +150,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // This isn't necessary now, but just in case we segue into a different

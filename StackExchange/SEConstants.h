@@ -20,6 +20,6 @@ static NSString * const PARAMETER_SITE = @"site";
 
 // Other constants
 static NSString * const STACK_OVERFLOW = @"stackoverflow";
-
+static NSString * const SETTINGS_FORCE_DOWNLOAD = @"settingsForceDownload";
 
 #endif /* SEConstants_h */

@@ -13,6 +13,8 @@ Calls StackExchange API [user endpoint](https://api.stackexchange.com/2.2/users?
 
 * Supports pull-down-refresh (UsersTableViewController)
 
+* Allow user to force download avatars
+
 ## CocoaPods referenced
 
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking) (3.0)
@@ -34,3 +36,6 @@ Shows avatars stored in app's document directory.
 
 ### User Details
 ![User Details](./StackExchange/Screenshots/UserDetails.png)
+
+## Settings
+![Settings](./StackExchange/Screenshots/Settings.png)
