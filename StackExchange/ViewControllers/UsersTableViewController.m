@@ -64,7 +64,8 @@
     self.tableView.refreshControl = refreshControl;
     
     // Check if user requested that existing pictures be deleted and re-downloaded
-    // Note: Normally, you would do this in a background thread. For now, I want finish file i/o before I continue.
+    // TODO: Normally, you would do this in a background thread. This and fetchUsers below
+    // are good candidates for serial queue, since I want one to finish before the other.
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([userDefaults objectForKey:SETTINGS_FORCE_DOWNLOAD] != nil && [userDefaults boolForKey:SETTINGS_FORCE_DOWNLOAD])
     {
