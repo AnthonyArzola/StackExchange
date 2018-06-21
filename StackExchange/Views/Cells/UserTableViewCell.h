@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelSilverPoints;
 @property (weak, nonatomic) IBOutlet UILabel *labelBronzePoints;
 
+@property (assign, nonatomic) NSInteger rowIndex;
+
 - (void)setCellValues;
 
 @end

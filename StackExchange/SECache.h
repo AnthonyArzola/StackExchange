@@ -12,6 +12,6 @@
 
 + (SECache *)sharedInstance;
 
-@property (nonatomic, strong, readonly) NSMutableDictionary *avatarImages;
+@property (nonatomic, strong, readonly) NSCache *avatarImages;
 
 @end

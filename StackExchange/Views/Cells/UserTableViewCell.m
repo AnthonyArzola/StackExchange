@@ -22,6 +22,7 @@
 
 @synthesize user;
 @synthesize formatter;
+@synthesize rowIndex;
 
 - (void)awakeFromNib {
     [super awakeFromNib];

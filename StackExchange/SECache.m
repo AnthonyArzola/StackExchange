@@ -12,7 +12,7 @@ static SECache * _sharedInstance = nil;
 
 @interface SECache()
 
-@property (nonatomic, strong, readwrite) NSMutableDictionary *avatarImages;
+@property (nonatomic, strong, readwrite) NSCache *avatarImages;
 
 @end
 
@@ -22,7 +22,8 @@ static SECache * _sharedInstance = nil;
 
 - (id)init {
     if (self = [super init]) {
-        self.avatarImages = [NSMutableDictionary new];
+        self.avatarImages = [NSCache new];
+        self.avatarImages.countLimit = 50;
     }
     return self;
 }

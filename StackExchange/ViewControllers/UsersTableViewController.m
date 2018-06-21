@@ -132,16 +132,26 @@
     }
     
     SEUser *stackOverflowUser = [self.stackOverflowUsers objectAtIndex:indexPath.row];
+    NSInteger currentRowIndex = indexPath.row;
+    cell.rowIndex = indexPath.row;
     
     cell.user = stackOverflowUser;
     [cell setCellValues];
-        
+    
+    // Set placeholder until we retrieve proper image
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.imageViewAvatar.image = [UIImage imageNamed:@"User.png"];
+    });
+    
     cell.labelRank.text = [NSString stringWithFormat:@"%d", 1 + (int)indexPath.row];
 
     [self fetchImageForUser:stackOverflowUser withCompletionHandler:^(UIImage *avatarImage) {
         // Update UI on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            cell.imageViewAvatar.image = avatarImage;
+            
+            if (currentRowIndex == cell.rowIndex) {
+                cell.imageViewAvatar.image = avatarImage;
+            }
             [cell.activityIndicatorAvatar stopAnimating];
         });
     }];
