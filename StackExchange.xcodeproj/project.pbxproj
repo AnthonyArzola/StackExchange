@@ -623,7 +623,7 @@
 			baseConfigurationReference = 7A3A8CFA9D7C812A4AB1CAFB /* Pods-StackExchange.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StackExchange/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -633,6 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.acme.StackExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -642,7 +643,7 @@
 			baseConfigurationReference = 7E6F8A1B80B26E20BD9CA225 /* Pods-StackExchange.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = StackExchange/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -652,6 +653,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.acme.StackExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
