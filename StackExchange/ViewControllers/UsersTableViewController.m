@@ -10,6 +10,7 @@
 #import "UsersTableViewController.h"
 #import "UserTableViewCell.h"
 #import "UserDetailsViewController.h"
+#import "UsersCollectionViewController.h"
 
 // Web service
 #import "SEWebService.h"
@@ -140,7 +141,7 @@
     
     // Set placeholder until we retrieve proper image
     dispatch_async(dispatch_get_main_queue(), ^{
-        cell.imageViewAvatar.image = [UIImage imageNamed:@"User.png"];
+        cell.imageViewAvatar.image = [UIImage imageNamed:@"User"];
     });
     
     cell.labelRank.text = [NSString stringWithFormat:@"%d", 1 + (int)indexPath.row];
@@ -174,6 +175,11 @@
         // Set a few properties
         UserDetailsViewController *detailsViewController = (UserDetailsViewController *)segue.destinationViewController;
         detailsViewController.user = stackOverflowUser;
+    }
+    else if ([segue.identifier isEqualToString:@"toUsersCollectionView"])
+    {
+        UsersCollectionViewController *collectionViewController = (UsersCollectionViewController *)segue.destinationViewController;
+        collectionViewController.stackOverflowUsers = [self.stackOverflowUsers copy];
     }
 }
 

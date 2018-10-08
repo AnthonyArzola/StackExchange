@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3E69246520D7392F00DE3316 /* AppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69246420D7392F00DE3316 /* AppSettingsViewController.m */; };
+		3E7C4A89216A90D00047629D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E7C4A88216A90D00047629D /* Media.xcassets */; };
 		3E83621520CA6D4800E26808 /* SEWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621420CA6D4800E26808 /* SEWebService.m */; };
 		3E83621820CA6DF400E26808 /* SEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621720CA6DF400E26808 /* SEUser.m */; };
 		3E83621B20CA6E1D00E26808 /* SEBadges.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83621A20CA6E1D00E26808 /* SEBadges.m */; };
-		3E83621D20CC815700E26808 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E83621C20CC815700E26808 /* User.png */; };
 		3E83621F20CC87E800E26808 /* StackOverflow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E83621E20CC87E800E26808 /* StackOverflow.png */; };
 		3E83622220CC980500E26808 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E83622120CC980500E26808 /* UserDetailsViewController.m */; };
-		3E83622620CCB98100E26808 /* UserLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E83622520CCB98100E26808 /* UserLarge.png */; };
 		3E87CBFA20C8F9C60072619E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E87CBF920C8F9C60072619E /* AppDelegate.m */; };
 		3E87CC0020C8F9C60072619E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E87CBFE20C8F9C60072619E /* Main.storyboard */; };
 		3E87CC0220C8F9C70072619E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E87CC0120C8F9C70072619E /* Assets.xcassets */; };
@@ -24,6 +23,8 @@
 		3E87CC2320C8FEA70072619E /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E87CC2220C8FEA70072619E /* UsersTableViewController.m */; };
 		3E87CC2620C905E60072619E /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E87CC2520C905E60072619E /* UserTableViewCell.m */; };
 		3E87CC2920C908430072619E /* pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E87CC2820C908430072619E /* pattern.png */; };
+		3E8BF50F20F2387D00418A85 /* UsersCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BF50E20F2387D00418A85 /* UsersCollectionViewController.m */; };
+		3E8BF51220F2D04000418A85 /* UserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8BF51120F2D04000418A85 /* UserCollectionViewCell.m */; };
 		3ECDDD5E20CE045800C28661 /* SECache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECDDD5D20CE045800C28661 /* SECache.m */; };
 		7AC2B063711DBA3B0C356DBB /* libPods-StackExchangeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB4134C69F895DFB31447AA /* libPods-StackExchangeTests.a */; };
 		C6EB3ACE6466C6DDADA2EC36 /* libPods-StackExchange.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A9602F9D3C04193A576BA8 /* libPods-StackExchange.a */; };
@@ -43,6 +44,7 @@
 		15A9602F9D3C04193A576BA8 /* libPods-StackExchange.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackExchange.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E69246320D7392F00DE3316 /* AppSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppSettingsViewController.h; sourceTree = "<group>"; };
 		3E69246420D7392F00DE3316 /* AppSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppSettingsViewController.m; sourceTree = "<group>"; };
+		3E7C4A88216A90D00047629D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3E83621220CA6D2500E26808 /* SEConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEConstants.h; sourceTree = "<group>"; };
 		3E83621320CA6D4800E26808 /* SEWebService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEWebService.h; sourceTree = "<group>"; };
 		3E83621420CA6D4800E26808 /* SEWebService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEWebService.m; sourceTree = "<group>"; };
@@ -50,11 +52,9 @@
 		3E83621720CA6DF400E26808 /* SEUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEUser.m; sourceTree = "<group>"; };
 		3E83621920CA6E1D00E26808 /* SEBadges.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SEBadges.h; sourceTree = "<group>"; };
 		3E83621A20CA6E1D00E26808 /* SEBadges.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SEBadges.m; sourceTree = "<group>"; };
-		3E83621C20CC815700E26808 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
 		3E83621E20CC87E800E26808 /* StackOverflow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StackOverflow.png; sourceTree = "<group>"; };
 		3E83622020CC980500E26808 /* UserDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
 		3E83622120CC980500E26808 /* UserDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
-		3E83622520CCB98100E26808 /* UserLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserLarge.png; sourceTree = "<group>"; };
 		3E87CBF520C8F9C60072619E /* StackExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E87CBF820C8F9C60072619E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3E87CBF920C8F9C60072619E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +71,10 @@
 		3E87CC2420C905E60072619E /* UserTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
 		3E87CC2520C905E60072619E /* UserTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
 		3E87CC2820C908430072619E /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
+		3E8BF50D20F2387D00418A85 /* UsersCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsersCollectionViewController.h; sourceTree = "<group>"; };
+		3E8BF50E20F2387D00418A85 /* UsersCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsersCollectionViewController.m; sourceTree = "<group>"; };
+		3E8BF51020F2D04000418A85 /* UserCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCell.h; sourceTree = "<group>"; };
+		3E8BF51120F2D04000418A85 /* UserCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCell.m; sourceTree = "<group>"; };
 		3ECDDD5C20CE045800C28661 /* SECache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SECache.h; sourceTree = "<group>"; };
 		3ECDDD5D20CE045800C28661 /* SECache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SECache.m; sourceTree = "<group>"; };
 		5D4251BFCA3A616190C678C2 /* Pods-StackExchangeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackExchangeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackExchangeTests/Pods-StackExchangeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 			children = (
 				3E87CC2420C905E60072619E /* UserTableViewCell.h */,
 				3E87CC2520C905E60072619E /* UserTableViewCell.m */,
+				3E8BF51020F2D04000418A85 /* UserCollectionViewCell.h */,
+				3E8BF51120F2D04000418A85 /* UserCollectionViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 				3E83622120CC980500E26808 /* UserDetailsViewController.m */,
 				3E69246320D7392F00DE3316 /* AppSettingsViewController.h */,
 				3E69246420D7392F00DE3316 /* AppSettingsViewController.m */,
+				3E8BF50D20F2387D00418A85 /* UsersCollectionViewController.h */,
+				3E8BF50E20F2387D00418A85 /* UsersCollectionViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,8 +222,7 @@
 			children = (
 				3E87CC2820C908430072619E /* pattern.png */,
 				3E83621E20CC87E800E26808 /* StackOverflow.png */,
-				3E83621C20CC815700E26808 /* User.png */,
-				3E83622520CCB98100E26808 /* UserLarge.png */,
+				3E7C4A88216A90D00047629D /* Media.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -328,11 +335,10 @@
 			files = (
 				3E87CC2920C908430072619E /* pattern.png in Resources */,
 				3E87CC0520C8F9C70072619E /* LaunchScreen.storyboard in Resources */,
+				3E7C4A89216A90D00047629D /* Media.xcassets in Resources */,
 				3E83621F20CC87E800E26808 /* StackOverflow.png in Resources */,
-				3E83621D20CC815700E26808 /* User.png in Resources */,
 				3E87CC0220C8F9C70072619E /* Assets.xcassets in Resources */,
 				3E87CC0020C8F9C60072619E /* Main.storyboard in Resources */,
-				3E83622620CCB98100E26808 /* UserLarge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,10 +459,12 @@
 				3E87CC2620C905E60072619E /* UserTableViewCell.m in Sources */,
 				3E83622220CC980500E26808 /* UserDetailsViewController.m in Sources */,
 				3E83621520CA6D4800E26808 /* SEWebService.m in Sources */,
+				3E8BF50F20F2387D00418A85 /* UsersCollectionViewController.m in Sources */,
 				3E87CC0820C8F9C70072619E /* main.m in Sources */,
 				3E87CC2320C8FEA70072619E /* UsersTableViewController.m in Sources */,
 				3ECDDD5E20CE045800C28661 /* SECache.m in Sources */,
 				3E83621820CA6DF400E26808 /* SEUser.m in Sources */,
+				3E8BF51220F2D04000418A85 /* UserCollectionViewCell.m in Sources */,
 				3E87CBFA20C8F9C60072619E /* AppDelegate.m in Sources */,
 				3E69246520D7392F00DE3316 /* AppSettingsViewController.m in Sources */,
 			);

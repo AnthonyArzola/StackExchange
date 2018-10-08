@@ -24,6 +24,8 @@
 @synthesize formatter;
 @synthesize rowIndex;
 
+#pragma mark - Life cycle methods
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -36,9 +38,9 @@
     [super layoutSubviews];
     
     // Configure badge/points
-    [self configureBadgeView:_viewGold withBorderColor:UIColor.yellowColor];
-    [self configureBadgeView:_viewSilver withBorderColor:UIColor.darkGrayColor];
-    [self configureBadgeView:_viewBronze withBorderColor:UIColor.brownColor];
+    [self configureBadgeView:self.viewGold withBorderColor:UIColor.yellowColor];
+    [self configureBadgeView:self.viewSilver withBorderColor:UIColor.darkGrayColor];
+    [self configureBadgeView:self.viewBronze withBorderColor:UIColor.brownColor];
     
     // Configure rank
     self.viewRank.clipsToBounds = YES;
@@ -54,12 +56,6 @@
     self.imageViewAvatar.layer.masksToBounds = YES;
     self.imageViewAvatar.layer.borderWidth = 1;
     self.imageViewAvatar.layer.borderColor = UIColor.lightGrayColor.CGColor;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 #pragma mark - Public methods
@@ -84,6 +80,7 @@
 #pragma mark - Private methods
 
 - (void)configureBadgeView:(UIView *)badgeView withBorderColor:(UIColor *)color {
+    
     badgeView.layer.borderColor = color.CGColor;
     badgeView.layer.borderWidth = 1;
     badgeView.layer.cornerRadius = 7;

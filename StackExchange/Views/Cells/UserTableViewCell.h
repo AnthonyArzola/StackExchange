@@ -13,7 +13,7 @@
 @interface UserTableViewCell : UITableViewCell
 
 // Model
-@property (nonatomic, weak) SEUser *user;
+@property (weak, nonatomic) SEUser *user;
 
 // UI
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewAvatar;
